@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Faturamento Mensal</title>
+</head>
+<body>
+	<h1>Faturamento Mensal</h1>
+	<div id="resultados"></div>
+
+	<script>
+		// dados do faturamento mensal
+		var faturamento = [5091, 5421, 1000, 20314, 8003, 1200, 102, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000, 4440, 1240, 1110, 12000, 12500, 13000];
+
+		// calcula o menor e maior valor de faturamento e a média mensal
+		var menor = faturamento[0];
+		var maior = faturamento[0];
+		var total = 0;
+		var diasComFaturamento = 0;
+
+		for (var i = 0; i < faturamento.length; i++) {
+			if (faturamento[i] > 0) {
+				total += faturamento[i];
+				diasComFaturamento++;
+
+				if (faturamento[i] < menor) {
+					menor = faturamento[i];
+				}
+
+				if (faturamento[i] > maior) {
+					maior = faturamento[i];
+				}
+			}
+		}
+
+		var media = total / diasComFaturamento;
+
+		// exibe os resultados na tela
+		var resultados = document.getElementById("resultados");
+
+		resultados.innerHTML += "<p>Valores de faturamento diário: R$ " + faturamento + "</p>";
+		resultados.innerHTML += "<p>Menor valor de faturamento diário: R$" + menor.toFixed(2) + "</p>";
+		resultados.innerHTML += "<p>Maior valor de faturamento diário: R$" + maior.toFixed(2) + "</p>";
+		resultados.innerHTML += "<p>Número de dias com faturamento acima da média: " + diasComFaturamento + "</p>";
+		resultados.innerHTML += "<p>Média mensal de faturamento: R$" + media.toFixed(2) + "</p>";
+	</script>
+</body>
+</html>

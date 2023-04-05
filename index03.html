@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Percentual de Faturamento por Estado</title>
+</head>
+<body>
+  <h1>Percentual de Faturamento por Estado</h1>
+
+  <table>
+    <tr>
+      <th>Estado</th>
+      <th>Faturamento</th>
+      <th>Percentual</th>
+    </tr>
+    <tr>
+      <td>SP</td>
+      <td>67,836.43</td>
+      <td id="sp_percentual"></td>
+    </tr>
+    <tr>
+      <td>RJ</td>
+      <td>36,678.66</td>
+      <td id="rj_percentual"></td>
+    </tr>
+    <tr>
+      <td>MG</td>
+      <td>29,229.88</td>
+      <td id="mg_percentual"></td>
+    </tr>
+    <tr>
+      <td>ES</td>
+      <td>27,165.48</td>
+      <td id="es_percentual"></td>
+    </tr>
+    <tr>
+      <td>Outros</td>
+      <td>19,849.53</td>
+      <td id="outros_percentual"></td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td id="total_faturamento"></td>
+      <td id="total_percentual"></td>
+    </tr>
+  </table>
+
+  <script>
+    const faturamento = {
+      "SP": 67836.43,
+      "RJ": 36678.66,
+      "MG": 29229.88,
+      "ES": 27165.48,
+      "Outros": 19849.53
+    };
+
+    let totalFaturamento = 0;
+
+    // Calcula o faturamento total
+    for (let estado in faturamento) {
+      totalFaturamento += faturamento[estado];
+    }
+
+    // Calcula o percentual de faturamento de cada estado
+    for (let estado in faturamento) {
+      const percentual = (faturamento[estado] / totalFaturamento * 100).toFixed(2);
+      document.getElementById(`${estado.toLowerCase()}_percentual`).textContent = `${percentual}%`;
+    }
+
+    // Mostra o faturamento total e o percentual total
+    document.getElementById("total_faturamento").textContent = `${totalFaturamento.toFixed(2)}`;
+    document.getElementById("total_percentual").textContent = "100%";
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Verificar número na sequência de Fibonacci</title>
+  </head>
+  <body>
+    <h1>Verificar número na sequência de Fibonacci</h1>
+    <form>
+      <label for="numero">Informe um número:</label>
+      <input type="number" id="numero" name="numero" required>
+      <button type="submit">Verificar</button>
+    </form>
+    <div id="resultado"></div>
+
+    <script>
+      // Selecionando o formulário e o elemento onde será exibido o resultado
+      const form = document.querySelector('form');
+      const resultado = document.querySelector('#resultado');
+
+      // Adicionando um listener para o evento "submit" do formulário
+      form.addEventListener('submit', event => {
+        event.preventDefault(); // Impedindo o envio padrão do formulário
+        const numero = parseInt(form.numero.value); // Obtendo o número informado pelo usuário
+
+        // Inicializando as variáveis para a sequência de Fibonacci
+        let a = 0;
+        let b = 1;
+        let fib = b;
+
+        // Gerando a sequência de Fibonacci até atingir ou ultrapassar o número informado
+        while (fib < numero) {
+          const temp = b;
+          b = a + b;
+          a = temp;
+          fib = b;
+        }
+
+        // Verificando se o número pertence à sequência de Fibonacci
+        if (fib === numero) {
+          resultado.textContent = `${numero} pertence à sequência de Fibonacci`;
+        } else {
+          resultado.textContent = `${numero} não pertence à sequência de Fibonacci`;
+        }
+      });
+    </script>
+  </body>
+</html>
